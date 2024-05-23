@@ -1,0 +1,23 @@
+{% extends "encyclopedia/layout.html" %}
+{% load static %}
+
+<head>
+    {% block title %}
+        Encyclopedia
+    {% endblock %}
+    <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
+</head>
+
+
+{% block body %}
+    <h1>Create a New Page</h1>
+
+    <form action="{% url 'create' %}" method="POST">
+        {% csrf_token %}
+        <label>Title:</label>
+        <input type="text" name="title" placeholder="Enter the title"><br>
+        <label>Markdown:</label><br>
+        <textarea name="content"></textarea><br>
+        <input type="submit" value="New page" class="button">
+    </form>
+{% endblock %}
